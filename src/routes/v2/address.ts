@@ -52,7 +52,7 @@ function root(
   return res.json({ status: "address" })
 }
 
-// Query the Insight API for details on a single BCH address.
+// Query the Insight API for details on a single TENT address.
 // Returns a Promise.
 async function detailsFromInsight(
   thisAddress: string,
@@ -61,9 +61,9 @@ async function detailsFromInsight(
   try {
     let addr: string
     if (
-      process.env.BITCOINCOM_BASEURL === "https://bch-insight.bitpay.com/api/"
+      process.env.BITCOINCOM_BASEURL === "https://explorer.tent.app/api/"
     ) {
-      addr = bitbox.Address.toCashAddress(thisAddress)
+      addr = bitbox.Address.toLegacyAddress(thisAddress)
     } else {
       addr = bitbox.Address.toLegacyAddress(thisAddress)
     }
@@ -85,8 +85,8 @@ async function detailsFromInsight(
 
     // Append different address formats to the return data.
     retData.legacyAddress = bitbox.Address.toLegacyAddress(retData.addrStr)
-    retData.cashAddress = bitbox.Address.toCashAddress(retData.addrStr)
-    retData.slpAddress = Utils.toSlpAddress(retData.cashAddress)
+    // retData.cashAddress = bitbox.Address.toCashAddress(retData.addrStr)
+    retData.slpAddress = Utils.toSlpAddress(retData.legacyAddress)
     delete retData.addrStr
 
     // Append pagination information to the return data.
@@ -132,13 +132,13 @@ async function detailsSingle(
       address
     )
 
-    // Ensure the input is a valid BCH address.
+    // Ensure the input is a valid TENT address.
     try {
       bitbox.Address.toLegacyAddress(address)
     } catch (err) {
       res.status(400)
       return res.json({
-        error: `Invalid BCH address. Double check your address is valid: ${address}`
+        error: `Invalid TENT address. Double check your address is valid: ${address}`
       })
     }
 
@@ -211,19 +211,19 @@ async function detailsBulk(
     // Validate each element in the address array.
     for (let i: number = 0; i < addresses.length; i++) {
       const thisAddress: string = addresses[i]
-      // Ensure the input is a valid BCH address.
+      // Ensure the input is a valid TENT address.
       try {
         bitbox.Address.toLegacyAddress(thisAddress)
       } catch (err) {
         res.status(400)
         return res.json({
-          error: `Invalid BCH address. Double check your address is valid: ${thisAddress}`
+          error: `Invalid TENT address. Double check your address is valid: ${thisAddress}`
         })
       }
 
       // Prevent a common user error. Ensure they are using the correct network address.
       const networkIsValid: boolean = routeUtils.validateNetwork(
-        Utils.toCashAddress(thisAddress)
+        Utils.toLegacyAddress(thisAddress)
       )
       if (!networkIsValid) {
         res.status(400)
@@ -270,9 +270,9 @@ async function utxoFromInsight(
   try {
     let addr: string
     if (
-      process.env.BITCOINCOM_BASEURL === "https://bch-insight.bitpay.com/api/"
+      process.env.BITCOINCOM_BASEURL === "https://explorer.tent.app/api/"
     ) {
-      addr = Utils.toCashAddress(thisAddress)
+      addr = Utils.toLegacyAddress(thisAddress)
     } else {
       addr = Utils.toLegacyAddress(thisAddress)
     }
@@ -298,8 +298,8 @@ async function utxoFromInsight(
       retData.asm = bitbox.Script.toASM(scriptSigBuffer)
     }
     retData.legacyAddress = Utils.toLegacyAddress(thisAddress)
-    retData.cashAddress = Utils.toCashAddress(thisAddress)
-    retData.slpAddress = Utils.toSlpAddress(retData.cashAddress)
+    // retData.cashAddress = Utils.toCashAddress(thisAddress)
+    retData.slpAddress = Utils.toSlpAddress(retData.legacyAddress)
     retData.utxos = response.data.map(
       (utxo: UTXOsInterface): UTXOsInterface => {
         delete utxo.address
@@ -341,13 +341,13 @@ async function utxoSingle(
     logger.debug(`Executing address/utxoSingle with this address: `, address)
     wlogger.debug(`Executing address/utxoSingle with this address: `, address)
 
-    // Ensure the input is a valid BCH address.
+    // Ensure the input is a valid TENT address.
     try {
       bitbox.Address.toLegacyAddress(address)
     } catch (err) {
       res.status(400)
       return res.json({
-        error: `Invalid BCH address. Double check your address is valid: ${address}`
+        error: `Invalid TENT address. Double check your address is valid: ${address}`
       })
     }
 
@@ -410,19 +410,19 @@ async function utxoBulk(
     for (let i: number = 0; i < addresses.length; i++) {
       const thisAddress: string = addresses[i]
 
-      // Ensure the input is a valid BCH address.
+      // Ensure the input is a valid TENT address.
       try {
         bitbox.Address.toLegacyAddress(thisAddress)
       } catch (er) {
         res.status(400)
         return res.json({
-          error: `Invalid BCH address. Double check your address is valid: ${thisAddress}`
+          error: `Invalid TENT address. Double check your address is valid: ${thisAddress}`
         })
       }
 
       // Prevent a common user error. Ensure they are using the correct network address.
       const networkIsValid: boolean = routeUtils.validateNetwork(
-        Utils.toCashAddress(thisAddress)
+        Utils.toLegacyAddress(thisAddress)
       )
       if (!networkIsValid) {
         res.status(400)
@@ -492,19 +492,19 @@ async function unconfirmedSingle(
     logger.debug(`Executing address/utxoSingle with this address: `, address)
     wlogger.debug(`Executing address/utxoSingle with this address: `, address)
 
-    // Ensure the input is a valid BCH address.
+    // Ensure the input is a valid TENT address.
     try {
       bitbox.Address.toLegacyAddress(address)
     } catch (err) {
       res.status(400)
       return res.json({
-        error: `Invalid BCH address. Double check your address is valid: ${address}`
+        error: `Invalid TENT address. Double check your address is valid: ${address}`
       })
     }
 
     // Prevent a common user error. Ensure they are using the correct network address.
     const networkIsValid: boolean = routeUtils.validateNetwork(
-      Utils.toCashAddress(address)
+      Utils.toLegacyAddress(address)
     )
     if (!networkIsValid) {
       res.status(400)
@@ -578,19 +578,19 @@ async function unconfirmedBulk(
     for (let i: number = 0; i < addresses.length; i++) {
       const thisAddress: string = addresses[i]
 
-      // Ensure the input is a valid BCH address.
+      // Ensure the input is a valid TENT address.
       try {
         bitbox.Address.toLegacyAddress(thisAddress)
       } catch (err) {
         res.status(400)
         return res.json({
-          error: `Invalid BCH address. Double check your address is valid: ${thisAddress}`
+          error: `Invalid TENT address. Double check your address is valid: ${thisAddress}`
         })
       }
 
       // Prevent a common user error. Ensure they are using the correct network address.
       const networkIsValid: boolean = routeUtils.validateNetwork(
-        Utils.toCashAddress(thisAddress)
+        Utils.toLegacyAddress(thisAddress)
       )
       if (!networkIsValid) {
         res.status(400)
@@ -661,7 +661,7 @@ async function transactionsFromInsight(
     // Append different address formats to the return data.
     const retData: TransactionsInterface = response.data
     retData.legacyAddress = bitbox.Address.toLegacyAddress(thisAddress)
-    retData.cashAddress = bitbox.Address.toCashAddress(thisAddress)
+    // retData.cashAddress = bitbox.Address.toCashAddress(thisAddress)
     retData.currentPage = currentPage
 
     return retData
@@ -703,13 +703,13 @@ async function transactionsBulk(
     for (let i: number = 0; i < addresses.length; i++) {
       const thisAddress: string = addresses[i]
 
-      // Ensure the input is a valid BCH address.
+      // Ensure the input is a valid TENT address.
       try {
         bitbox.Address.toLegacyAddress(thisAddress)
       } catch (err) {
         res.status(400)
         return res.json({
-          error: `Invalid BCH address. Double check your address is valid: ${thisAddress}`
+          error: `Invalid TENT address. Double check your address is valid: ${thisAddress}`
         })
       }
 
@@ -787,19 +787,19 @@ async function transactionsSingle(
       address
     )
 
-    // Ensure the input is a valid BCH address.
+    // Ensure the input is a valid TENT address.
     try {
       bitbox.Address.toLegacyAddress(address)
     } catch (err) {
       res.status(400)
       return res.json({
-        error: `Invalid BCH address. Double check your address is valid: ${address}`
+        error: `Invalid TENT address. Double check your address is valid: ${address}`
       })
     }
 
     // Prevent a common user error. Ensure they are using the correct network address.
     const networkIsValid: boolean = routeUtils.validateNetwork(
-      Utils.toCashAddress(address)
+      Utils.toLegacyAddress(address)
     )
     if (!networkIsValid) {
       res.status(400)

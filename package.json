@@ -1,7 +1,7 @@
 {
-  "name": "rest.bitcoin.com",
+  "name": "rest.tent.app",
   "version": "3.12.4",
-  "description": "REST API for Bitcoin.com's Cloud",
+  "description": "REST API for TENT",
   "author": "Gabriel Cardona <gabriel@bitcoin.com>",
   "contributors": [
     "Chris Troutner <chris.troutner@gmail.com>"
@@ -30,10 +30,10 @@
   },
   "dependencies": {
     "axios": "^0.19.0",
-    "bitbox-sdk": "8.4.2",
-    "bitcoincash-zmq-decoder": "0.1.5",
+    "bitbox-sdk": "TENTSLP/bitbox-sdk#v8.7.0-tent",
+    "bitcoincash-zmq-decoder": "TENTSLP/bitcoincash-zmq-decoder",
     "body-parser": "^1.18.3",
-    "cashaccounts": "^0.4.2",
+    "cashaccounts": "TENTSLP/cashaccounts",
     "cookie-parser": "~1.4.3",
     "cors": "^2.8.3",
     "debug": "~2.6.3",
@@ -56,7 +56,8 @@
     "passport-http": "^0.3.0",
     "pg": "^6.2.3",
     "pg-hstore": "^2.3.2",
-    "slp-sdk": "^4.15.0",
+    "prom-client": "^13.1.0",
+    "slp-sdk": "TENTSLP/tentslp-sdk#feat/bulk_slp_transactions",
     "socket.io": "^2.1.1",
     "strftime": "^0.10.0",
     "swagger-stats": "^0.95.6",
@@ -67,7 +68,7 @@
   "devDependencies": {
     "@types/express": "^4.16.0",
     "@types/node": "^10.12.1",
-    "bignumber.js": "^8.1.1",
+    "bignumber.js": "9.0.0",
     "chai": "^4.1.2",
     "coveralls": "^3.0.2",
     "eslint-plugin-prettier": "^3.1.0",

@@ -26,7 +26,7 @@ class Blockbook {
     _this.axios = axios
   }
 
-  // Query the Blockbook API for a balance on a single BCH address.
+  // Query the Blockbook API for a balance on a single TENT address.
   // Returns a Promise.
   async balance(thisAddress) {
     try {
@@ -79,7 +79,7 @@ class Blockbook {
     }
   }
 
-  // Query the Blockbook API for UTXOs associated with a single BCH address.
+  // Query the Blockbook API for UTXOs associated with a single TENT address.
   // Returns a Promise.
   async utxo(thisAddress) {
     try {

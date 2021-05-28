@@ -28,7 +28,7 @@ describe("#Ninsight", () => {
   })
 
   describe("#balance", () => {
-    it("should retrieve BCH balance and output should comply with spec", async () => {
+    it("should retrieve TENT balance and output should comply with spec", async () => {
       // console.log(`mockData: ${JSON.stringify(mockData, null, 2)}`)
 
       // Use mocks to prevent live network calls.
@@ -88,7 +88,7 @@ describe("#Ninsight", () => {
   })
 
   describe("#utxo", () => {
-    it("should retrieve BCH balance and output should comply with spec", async () => {
+    it("should retrieve TENT balance and output should comply with spec", async () => {
       // console.log(`mockData: ${JSON.stringify(mockData, null, 2)}`)
 
       // Use mocks to prevent live network calls.

@@ -92,13 +92,13 @@ async function validateAddressBulk(
     for (let i: number = 0; i < addresses.length; i++) {
       const address: string = addresses[i]
 
-      // Ensure the input is a valid BCH address.
+      // Ensure the input is a valid TENT address.
       try {
         bitbox.Address.toLegacyAddress(address)
       } catch (err) {
         res.status(400)
         return res.json({
-          error: `Invalid BCH address. Double check your address is valid: ${address}`
+          error: `Invalid TENT address. Double check your address is valid: ${address}`
         })
       }
 

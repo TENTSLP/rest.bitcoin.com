@@ -43,9 +43,9 @@ util.inspect.defaultOptions = { depth: 5 }
 
 // Setup REST and TREST URLs used by slpjs
 // Dev note: this allows for unit tests to mock the URL.
-if (!process.env.REST_URL) process.env.REST_URL = `https://rest.bitcoin.com/v2/`
+if (!process.env.REST_URL) process.env.REST_URL = `https://rest.tent.app/v2/`
 if (!process.env.TREST_URL)
-  process.env.TREST_URL = `https://trest.bitcoin.com/v2/`
+  process.env.TREST_URL = `https://trest.tent.app/v2/`
 
 // Determine the Access password for a private instance of SLPDB.
 // https://gist.github.com/christroutner/fc717ca704dec3dded8b52fae387eab2
@@ -431,18 +431,18 @@ async function balancesForAddressSingle(
       return res.json({ error: "address can not be empty" })
     }
 
-    // Ensure the input is a valid BCH address.
+    // Ensure the input is a valid TENT address.
     try {
-      utils.toCashAddress(address)
+      utils.toLegacyAddress(address)
     } catch (err) {
       res.status(400)
       return res.json({
-        error: `Invalid BCH address. Double check your address is valid: ${address}`
+        error: `Invalid TENT address. Double check your address is valid: ${address}`
       })
     }
 
     // Prevent a common user error. Ensure they are using the correct network address.
-    const cashAddr: string = utils.toCashAddress(address)
+    const cashAddr: string = utils.toLegacyAddress(address)
     const networkIsValid: boolean = routeUtils.validateNetwork(cashAddr)
     if (!networkIsValid) {
       res.status(400)
@@ -630,18 +630,18 @@ async function balancesForAddressBulk(
         return res.json({ error: "address can not be empty" })
       }
 
-      // Ensure the input is a valid BCH address.
+      // Ensure the input is a valid TENT address.
       try {
-        utils.toCashAddress(address)
+        utils.toLegacyAddress(address)
       } catch (err) {
         res.status(400)
         return res.json({
-          error: `Invalid BCH address. Double check your address is valid: ${address}`
+          error: `Invalid TENT address. Double check your address is valid: ${address}`
         })
       }
 
       // Prevent a common user error. Ensure they are using the correct network address.
-      const cashAddr: string = utils.toCashAddress(address)
+      const cashAddr: string = utils.toLegacyAddress(address)
       const networkIsValid: boolean = routeUtils.validateNetwork(cashAddr)
       if (!networkIsValid) {
         res.status(400)
@@ -1066,18 +1066,18 @@ async function balancesForAddressByTokenIDSingle(
       return res.json({ error: "tokenId can not be empty" })
     }
 
-    // Ensure the input is a valid BCH address.
+    // Ensure the input is a valid TENT address.
     try {
-      utils.toCashAddress(address)
+      utils.toLegacyAddress(address)
     } catch (err) {
       res.status(400)
       return res.json({
-        error: `Invalid BCH address. Double check your address is valid: ${address}`
+        error: `Invalid TENT address. Double check your address is valid: ${address}`
       })
     }
 
     // Prevent a common user error. Ensure they are using the correct network address.
-    const cashAddr: string = utils.toCashAddress(address)
+    const cashAddr: string = utils.toLegacyAddress(address)
     const networkIsValid: boolean = routeUtils.validateNetwork(cashAddr)
     if (!networkIsValid) {
       res.status(400)
@@ -1156,7 +1156,7 @@ async function balancesForAddressByTokenIDSingle(
     // Get data from SLPDB.
     const tokenRes: AxiosResponse<any> = await axios.get(url, options)
     let resVal: BalanceForAddressByTokenId = {
-      cashAddress: utils.toCashAddress(slpAddr),
+      cashAddress: utils.toLegacyAddress(slpAddr),
       legacyAddress: utils.toLegacyAddress(slpAddr),
       slpAddress: slpAddr,
       tokenId: tokenId,
@@ -1167,7 +1167,7 @@ async function balancesForAddressByTokenIDSingle(
       tokenRes.data.g.forEach((token: any): any => {
         if (token._id === tokenId) {
           resVal = {
-            cashAddress: utils.toCashAddress(slpAddr),
+            cashAddress: utils.toLegacyAddress(slpAddr),
             legacyAddress: utils.toLegacyAddress(slpAddr),
             slpAddress: slpAddr,
             tokenId: token._id,
@@ -1178,7 +1178,7 @@ async function balancesForAddressByTokenIDSingle(
       })
     } else {
       resVal = {
-        cashAddress: utils.toCashAddress(slpAddr),
+        cashAddress: utils.toLegacyAddress(slpAddr),
         legacyAddress: utils.toLegacyAddress(slpAddr),
         slpAddress: slpAddr,
         tokenId: tokenId,
@@ -1223,18 +1223,18 @@ async function balancesForAddressByTokenIDBulk(
         return res.json({ error: "tokenId can not be empty" })
       }
 
-      // Ensure the input is a valid BCH address.
+      // Ensure the input is a valid TENT address.
       try {
-        utils.toCashAddress(r.address)
+        utils.toLegacyAddress(r.address)
       } catch (err) {
         res.status(400)
         return res.json({
-          error: `Invalid BCH address. Double check your address is valid: ${r.address}`
+          error: `Invalid TENT address. Double check your address is valid: ${r.address}`
         })
       }
 
       // Prevent a common user error. Ensure they are using the correct network address.
-      const cashAddr: string = utils.toCashAddress(r.address)
+      const cashAddr: string = utils.toLegacyAddress(r.address)
       const networkIsValid: boolean = routeUtils.validateNetwork(cashAddr)
       if (!networkIsValid) {
         res.status(400)
@@ -1319,7 +1319,7 @@ async function balancesForAddressByTokenIDBulk(
         )
 
         let resVal: BalanceForAddressByTokenId = {
-          cashAddress: utils.toCashAddress(slpAddr),
+          cashAddress: utils.toLegacyAddress(slpAddr),
           legacyAddress: utils.toLegacyAddress(slpAddr),
           slpAddress: slpAddr,
           tokenId: data.tokenId,
@@ -1331,7 +1331,7 @@ async function balancesForAddressByTokenIDBulk(
             async (token: any): Promise<any> => {
               if (token._id === data.tokenId) {
                 resVal = {
-                  cashAddress: utils.toCashAddress(data.address),
+                  cashAddress: utils.toLegacyAddress(data.address),
                   legacyAddress: utils.toLegacyAddress(data.address),
                   slpAddress: data.address,
                   tokenId: token._id,
@@ -1343,7 +1343,7 @@ async function balancesForAddressByTokenIDBulk(
           )
         } else {
           resVal = {
-            cashAddress: utils.toCashAddress(data.address),
+            cashAddress: utils.toLegacyAddress(data.address),
             legacyAddress: utils.toLegacyAddress(data.address),
             slpAddress: data.address,
             tokenId: data.tokenId,
@@ -1398,7 +1398,7 @@ async function convertAddressSingle(
       legacyAddress: ""
     }
     obj.slpAddress = slpAddr
-    obj.cashAddress = SLP.Address.toCashAddress(slpAddr)
+    obj.cashAddress = SLP.Address.toLegacyAddress(slpAddr)
     obj.legacyAddress = SLP.Address.toLegacyAddress(obj.cashAddress)
 
     res.status(200)
@@ -1460,7 +1460,7 @@ async function convertAddressBulk(
       legacyAddress: ""
     }
     obj.slpAddress = slpAddr
-    obj.cashAddress = SLP.Address.toCashAddress(slpAddr)
+    obj.cashAddress = SLP.Address.toLegacyAddress(slpAddr)
     obj.legacyAddress = SLP.Address.toLegacyAddress(obj.cashAddress)
 
     convertedAddresses.push(obj)
@@ -2176,7 +2176,7 @@ const processInputs = (tx: TransactionInterface): any => {
         const address: string = vin.addr
         if (address) {
           vin.legacyAddress = bitbox.Address.toLegacyAddress(address)
-          vin.cashAddress = bitbox.Address.toCashAddress(address)
+          vin.cashAddress = bitbox.Address.toLegacyAddress(address)
           delete vin.addr
         }
         delete vin.valueSat
@@ -2195,7 +2195,7 @@ const processInputs = (tx: TransactionInterface): any => {
         if (vout.scriptPubKey.addresses) {
           const cashAddrs: string[] = []
           vout.scriptPubKey.addresses.forEach((addr: any) => {
-            const cashAddr = bitbox.Address.toCashAddress(addr)
+            const cashAddr = bitbox.Address.toLegacyAddress(addr)
             cashAddrs.push(cashAddr)
           })
           vout.scriptPubKey.cashAddrs = cashAddrs
@@ -2349,18 +2349,18 @@ async function txsByAddressSingle(
       ? parseInt(req.query.fromBlock.toString(), 10)
       : 0
 
-    // Ensure the input is a valid BCH address.
+    // Ensure the input is a valid TENT address.
     try {
-      utils.toCashAddress(address)
+      utils.toLegacyAddress(address)
     } catch (err) {
       res.status(400)
       return res.json({
-        error: `Invalid BCH address. Double check your address is valid: ${address}`
+        error: `Invalid TENT address. Double check your address is valid: ${address}`
       })
     }
 
     // Ensure it is using the correct network.
-    const cashAddr: string = utils.toCashAddress(address)
+    const cashAddr: string = utils.toLegacyAddress(address)
     const networkIsValid: boolean = routeUtils.validateNetwork(cashAddr)
     if (!networkIsValid) {
       res.status(400)
@@ -2433,18 +2433,18 @@ async function txsByAddressBulk(
         return res.json({ error: "address can not be empty" })
       }
 
-      // Ensure the input is a valid BCH address.
+      // Ensure the input is a valid TENT address.
       try {
-        utils.toCashAddress(address)
+        utils.toLegacyAddress(address)
       } catch (err) {
         res.status(400)
         return res.json({
-          error: `Invalid BCH address. Double check your address is valid: ${address}`
+          error: `Invalid TENT address. Double check your address is valid: ${address}`
         })
       }
 
       // Ensure it is using the correct network.
-      const cashAddr: string = utils.toCashAddress(address)
+      const cashAddr: string = utils.toLegacyAddress(address)
       const networkIsValid: boolean = routeUtils.validateNetwork(cashAddr)
       if (!networkIsValid) {
         res.status(400)
@@ -2578,18 +2578,18 @@ async function txsTokenIdAddressBulk(
         return res.json({ error: "tokenId can not be empty" })
       }
 
-      // Ensure the input is a valid BCH address.
+      // Ensure the input is a valid TENT address.
       try {
-        utils.toCashAddress(r.address)
+        utils.toLegacyAddress(r.address)
       } catch (err) {
         res.status(400)
         return res.json({
-          error: `Invalid BCH address. Double check your address is valid: ${r.address}`
+          error: `Invalid TENT address. Double check your address is valid: ${r.address}`
         })
       }
 
       // Prevent a common user error. Ensure they are using the correct network address.
-      const cashAddr: string = utils.toCashAddress(r.address)
+      const cashAddr: string = utils.toLegacyAddress(r.address)
       const networkIsValid: boolean = routeUtils.validateNetwork(cashAddr)
       if (!networkIsValid) {
         res.status(400)

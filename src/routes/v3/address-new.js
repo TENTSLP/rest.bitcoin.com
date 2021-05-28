@@ -50,7 +50,7 @@ class Address {
     return res.json({ status: "address-v3" })
   }
 
-  // Get the BCH balance for an array of addresses.
+  // Get the TENT balance for an array of addresses.
   // curl -X POST "http://localhost:3000/v3-alpha/address/balance" -H "accept: application/json" -H "Content-Type: application/json" -d "{\"addresses\":[\"bitcoincash:qp3sn6vlwz28ntmf3wmyra7jqttfx7z6zgtkygjhc7\",\"bitcoincash:qpdh9s677ya8tnx7zdhfrn8qfyvy22wj4qa7nwqa5v\"]}"
   async balance(req, res, next) {
     try {
@@ -75,13 +75,13 @@ class Address {
       // Validate each element in the address array.
       for (let i = 0; i < addresses.length; i++) {
         const thisAddress = addresses[i]
-        // Ensure the input is a valid BCH address.
+        // Ensure the input is a valid TENT address.
         try {
           _this.bitbox.Address.toLegacyAddress(thisAddress)
         } catch (err) {
           res.status(400)
           return res.json({
-            error: `Invalid BCH address. Double check your address is valid: ${thisAddress}`
+            error: `Invalid TENT address. Double check your address is valid: ${thisAddress}`
           })
         }
 
@@ -153,13 +153,13 @@ class Address {
       // Validate each element in the address array.
       for (let i = 0; i < addresses.length; i++) {
         const thisAddress = addresses[i]
-        // Ensure the input is a valid BCH address.
+        // Ensure the input is a valid TENT address.
         try {
           _this.bitbox.Address.toLegacyAddress(thisAddress)
         } catch (err) {
           res.status(400)
           return res.json({
-            error: `Invalid BCH address. Double check your address is valid: ${thisAddress}`
+            error: `Invalid TENT address. Double check your address is valid: ${thisAddress}`
           })
         }
 

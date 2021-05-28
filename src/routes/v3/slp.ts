@@ -471,13 +471,13 @@ async function balancesForAddressSingle(
       return res.json({ error: "address can not be empty" })
     }
 
-    // Ensure the input is a valid BCH address.
+    // Ensure the input is a valid TENT address.
     try {
       utils.toCashAddress(address)
     } catch (err) {
       res.status(400)
       return res.json({
-        error: `Invalid BCH address. Double check your address is valid: ${address}`
+        error: `Invalid TENT address. Double check your address is valid: ${address}`
       })
     }
 
@@ -670,13 +670,13 @@ async function balancesForAddressBulk(
         return res.json({ error: "address can not be empty" })
       }
 
-      // Ensure the input is a valid BCH address.
+      // Ensure the input is a valid TENT address.
       try {
         utils.toCashAddress(address)
       } catch (err) {
         res.status(400)
         return res.json({
-          error: `Invalid BCH address. Double check your address is valid: ${address}`
+          error: `Invalid TENT address. Double check your address is valid: ${address}`
         })
       }
 
@@ -1106,13 +1106,13 @@ async function balancesForAddressByTokenIDSingle(
       return res.json({ error: "tokenId can not be empty" })
     }
 
-    // Ensure the input is a valid BCH address.
+    // Ensure the input is a valid TENT address.
     try {
       utils.toCashAddress(address)
     } catch (err) {
       res.status(400)
       return res.json({
-        error: `Invalid BCH address. Double check your address is valid: ${address}`
+        error: `Invalid TENT address. Double check your address is valid: ${address}`
       })
     }
 
@@ -1263,13 +1263,13 @@ async function balancesForAddressByTokenIDBulk(
         return res.json({ error: "tokenId can not be empty" })
       }
 
-      // Ensure the input is a valid BCH address.
+      // Ensure the input is a valid TENT address.
       try {
         utils.toCashAddress(r.address)
       } catch (err) {
         res.status(400)
         return res.json({
-          error: `Invalid BCH address. Double check your address is valid: ${r.address}`
+          error: `Invalid TENT address. Double check your address is valid: ${r.address}`
         })
       }
 
@@ -2553,13 +2553,13 @@ async function txsTokenIdAddressBulk(
         return res.json({ error: "tokenId can not be empty" })
       }
 
-      // Ensure the input is a valid BCH address.
+      // Ensure the input is a valid TENT address.
       try {
         utils.toCashAddress(r.address)
       } catch (err) {
         res.status(400)
         return res.json({
-          error: `Invalid BCH address. Double check your address is valid: ${r.address}`
+          error: `Invalid TENT address. Double check your address is valid: ${r.address}`
         })
       }
 

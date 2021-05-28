@@ -98,7 +98,7 @@ describe("#AddressRouter", () => {
       assert.equal(res.statusCode, 400, "HTTP status code 400 expected.")
       assert.include(
         result.error,
-        "Invalid BCH address",
+        "Invalid TENT address",
         "Proper error message"
       )
     })
@@ -285,7 +285,7 @@ describe("#AddressRouter", () => {
       assert.equal(res.statusCode, 400, "HTTP status code 400 expected.")
       assert.include(
         result.error,
-        "Invalid BCH address",
+        "Invalid TENT address",
         "Proper error message"
       )
     })

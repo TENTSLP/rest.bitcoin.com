@@ -1,12 +1,9 @@
-[![Coverage Status](https://coveralls.io/repos/github/Bitcoin-com/rest.bitcoin.com/badge.svg?branch=ct-coveralls)](https://coveralls.io/github/Bitcoin-com/rest.bitcoin.com?branch=ct-coveralls)
-
 ## REST
 
-[rest.bitcoin.com](https://rest.bitcoin.com) is the REST layer for Bitcoin.com's Cloud.
+[rest.tent.app](https://rest.tent.app) is the REST layer for TENT.
 
-More info: [developer.bitcoin.com](https://developer.bitcoin.com). Chatroom [http://geni.us/CashDev](geni.us/CashDev)
-
-Testnet available at [trest.bitcoin.com](https://trest.bitcoin.com)
+More info on TENT [Discord](https://discord.gg/78rVJcH)
+Testnet available at [trest.tent.app](https://trest.tent.app)
 
 ## Usage
 
@@ -16,7 +13,7 @@ You can also run an instance of REST for your own full node.
 
 #### NodeJS
 
-Install nodejs's LTS. 8.11.4 at the time of writing.
+Install nodejs's LTS. v10.23.3 at the time of writing.
 
 https://nodejs.org/en/
 
@@ -43,7 +40,7 @@ RUN yum install -y make gcc*
 
 ### Full node
 
-Fire up a full Bitcoin Cash node and add the following to your `bitcoin.conf`.
+Fire up a full TENT node and add the following to your `snowgem.conf`.
 
 ```
 # Accept command line and JSON-RPC commands.
@@ -78,7 +75,7 @@ sudo ufw allow 28332
 Next clone the rest.bitcoin.com repo.
 
 ```
-git clone https://github.com/Bitcoin-com/rest.bitcoin.com.git
+git clone https://github.com/TENT/rest.tent.app.git
 ```
 
 #### Install dependencies
@@ -86,7 +83,7 @@ git clone https://github.com/Bitcoin-com/rest.bitcoin.com.git
 `cd` into the newly cloned directory and install the dependencies.
 
 ```
-cd rest.bitcoin.com
+cd rest.tent.app
 npm install
 ```
 
@@ -101,31 +98,29 @@ npm run build
 Now you need to start REST and pass in the following environment variables
 
 - BITCOINCOM_BASEURL - On rest.bitcoin.com this env var is to our internal insight API. You can use insight's public API.
-- RPC_BASEURL - The IP address of your full BCH node
-- RPC_PASSWORD - The rpc password of your full BCH node
-- RPC_USERNAME - The rpc username of your full BCH node
+- RPC_BASEURL - The IP address of your full TENT node
+- RPC_PASSWORD - The rpc password of your full TENT node
+- RPC_USERNAME - The rpc username of your full TENT node
 - ZEROMQ_PORT - The port on which you enabled ZeroMQ
-- ZEROMQ_URL - The IP address of your full BCH node
+- ZEROMQ_URL - The IP address of your full TENT node
 - NETWORK - mainnet or testnet depending on which network you're using
 - BITDB_URL - mainnet or testnet BITDB URL
-- SLPDB_URL - mainnet or testnet SLPDB URL
+- SLPDB_URL - mainnet or testnet TENTSLPDB URL
 - RATE_LIMIT_MAX_REQUESTS (optional) - Rate limit per route per minute. Defaults to 60. Set to 0 to disable rate limit.
 - NON_JS_FRAMEWORK (optional) - enables endpoints to create, mint, send, burn and burnAll SLP tokens
 
 Here's how the final command would look
 
 ```
-BITCOINCOM_BASEURL=https://bch-insight.bitpay.com/api/ RPC_BASEURL=http://your.nodes.ip.address:8332/ RPC_PASSWORD=rpcPasssword RPC_USERNAME=rpcUsername ZEROMQ_PORT=28332 ZEROMQ_URL=your.nodes.ip.address BITDB_URL=https://bitdb.bitcoin.com/ SLPDB_URL=https://slpdb.bitcoin.com/ NETWORK=mainnet npm run dev
+BITCOINCOM_BASEURL=https://explorer.tent.app/api/ RPC_BASEURL=http://your.nodes.ip.address:16112/ RPC_PASSWORD=rpcPasssword RPC_USERNAME=rpcUsername ZEROMQ_PORT=28332 ZEROMQ_URL=your.nodes.ip.address BITDB_URL=https://bitdb.tent.app/ SLPDB_URL=https://tentslpdb.tent.app/ NETWORK=mainnet npm start
 ```
 
 Starting in the regtest mode (partly working since the bitcoincom_baseurl does not work with local nodes):
 
 ```bash
-PORT=3000 BITCOINCOM_BASEURL=http://localhost:3000/api/ RPC_BASEURL=http://localhost:18332/ RPC_PASSWORD=regtest RPC_USERNAME=regtest ZEROMQ_PORT=0 ZEROMQ_URL=0 NETWORK=local npm start
+PORT=3000 BITCOINCOM_BASEURL=http://localhost:3000/api/ RPC_BASEURL=http://localhost:16112/ RPC_PASSWORD=regtest RPC_USERNAME=regtest ZEROMQ_PORT=0 ZEROMQ_URL=0 NETWORK=local npm start
 ```
 
 #### View in browser
 
 Finally open `http://localhost:3000/` and confirm you see the GUI
-
-[![Greenkeeper badge](https://badges.greenkeeper.io/Bitcoin.com/rest.bitcoin.com.svg)](https://greenkeeper.io/)

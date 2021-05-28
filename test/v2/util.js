@@ -3,7 +3,7 @@
 
   This test file uses the environment variable TEST to switch between unit
   and integration tests. By default, TEST is set to 'unit'. Set this variable
-  to 'integration' to run the tests against BCH mainnet.
+  to 'integration' to run the tests against TENT mainnet.
 */
 
 const chai = require("chai")
@@ -195,7 +195,7 @@ describe("#Util", () => {
       assert.equal(res.statusCode, 400, "HTTP status code 400 expected.")
       assert.include(
         result.error,
-        "Invalid BCH address. Double check your address is valid",
+        "Invalid TENT address. Double check your address is valid",
         "Proper error message"
       )
     })

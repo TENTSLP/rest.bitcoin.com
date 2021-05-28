@@ -3,7 +3,7 @@
 
   This test file uses the environment variable TEST to switch between unit
   and integration tests. By default, TEST is set to 'unit'. Set this variable
-  to 'integration' to run the tests against BCH mainnet.
+  to 'integration' to run the tests against TENT mainnet.
 
   TODO:
   -See listSingleToken() tests.
@@ -458,7 +458,7 @@ describe("#SLP", () => {
       //console.log(`result: ${util.inspect(result)}`)
 
       assert.hasAllKeys(result, ["error"])
-      assert.include(result.error, "Invalid BCH address.")
+      assert.include(result.error, "Invalid TENT address.")
     })
 
     it("should throw 400 if address network mismatch", async () => {
@@ -541,7 +541,7 @@ describe("#SLP", () => {
     //   console.log(`result: ${util.inspect(result)}`)
     //
     //   assert.hasAllKeys(result, ["error"])
-    //   assert.include(result.error, "Invalid BCH address.")
+    //   assert.include(result.error, "Invalid TENT address.")
     // })
 
     // TO-DO: This test case fails and needs to be fixed.
@@ -645,7 +645,7 @@ describe("#SLP", () => {
       //console.log(`result: ${util.inspect(result)}`)
 
       assert.hasAllKeys(result, ["error"])
-      assert.include(result.error, "Invalid BCH address.")
+      assert.include(result.error, "Invalid TENT address.")
     })
 
     it("should throw 400 if address network mismatch", async () => {
@@ -780,7 +780,7 @@ describe("#SLP", () => {
 
         assert.include(
           err.message,
-          `Invalid BCH address. Double check your address`
+          `Invalid TENT address. Double check your address`
         )
       }
     })
@@ -1202,7 +1202,7 @@ describe("#SLP", () => {
       //console.log(`result: ${util.inspect(result)}`)
 
       assert.hasAllKeys(result, ["error"])
-      assert.include(result.error, "Invalid BCH address.")
+      assert.include(result.error, "Invalid TENT address.")
     })
 
     it("should throw 400 if address network mismatch", async () => {
@@ -1262,7 +1262,7 @@ describe("#SLP", () => {
       //console.log(`result: ${util.inspect(result)}`)
 
       assert.hasAllKeys(result, ["error"])
-      assert.include(result.error, "Invalid BCH address.")
+      assert.include(result.error, "Invalid TENT address.")
     })
 
     it("should throw 400 if address network mismatch", async () => {

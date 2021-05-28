@@ -6,6 +6,7 @@ test-local-server
 start-bitcoincom.sh
 coverage
 start-my-infra
+dist/
 dist/routes/**
 nohup.out
 slp-tx-db/
