@@ -8,6 +8,7 @@
   freemium rate limits apply.
 */
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.routeRateLimit = void 0;
 var RateLimit = require("express-rate-limit");
 // Set max requests per minute
 var maxRequests = process.env.RATE_LIMIT_MAX_REQUESTS
