@@ -437,7 +437,7 @@ async function getRawTransactionSingle(
   }
 }
 
-// Transmit a raw transaction to the BCH network.
+// Transmit a raw transaction to the TENT network.
 async function sendRawTransactionBulk(
   req: express.Request,
   res: express.Response,
@@ -531,7 +531,7 @@ async function sendRawTransactionBulk(
   }
 }
 
-// Transmit a raw transaction to the BCH network.
+// Transmit a raw transaction to the TENT network.
 async function sendRawTransactionSingle(
   req: express.Request,
   res: express.Response,

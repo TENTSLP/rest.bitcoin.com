@@ -52,7 +52,7 @@ function root(
   return res.json({ status: "address" })
 }
 
-// Query the Insight API for details on a single BCH address.
+// Query the Insight API for details on a single TENT address.
 // Returns a Promise.
 async function detailsFromInsight(
   thisAddress: string,
@@ -132,13 +132,13 @@ async function detailsSingle(
       address
     )
 
-    // Ensure the input is a valid BCH address.
+    // Ensure the input is a valid TENT address.
     try {
       bitbox.Address.toLegacyAddress(address)
     } catch (err) {
       res.status(400)
       return res.json({
-        error: `Invalid BCH address. Double check your address is valid: ${address}`
+        error: `Invalid TENT address. Double check your address is valid: ${address}`
       })
     }
 
@@ -211,13 +211,13 @@ async function detailsBulk(
     // Validate each element in the address array.
     for (let i: number = 0; i < addresses.length; i++) {
       const thisAddress: string = addresses[i]
-      // Ensure the input is a valid BCH address.
+      // Ensure the input is a valid TENT address.
       try {
         bitbox.Address.toLegacyAddress(thisAddress)
       } catch (err) {
         res.status(400)
         return res.json({
-          error: `Invalid BCH address. Double check your address is valid: ${thisAddress}`
+          error: `Invalid TENT address. Double check your address is valid: ${thisAddress}`
         })
       }
 
@@ -341,13 +341,13 @@ async function utxoSingle(
     logger.debug(`Executing address/utxoSingle with this address: `, address)
     wlogger.debug(`Executing address/utxoSingle with this address: `, address)
 
-    // Ensure the input is a valid BCH address.
+    // Ensure the input is a valid TENT address.
     try {
       bitbox.Address.toLegacyAddress(address)
     } catch (err) {
       res.status(400)
       return res.json({
-        error: `Invalid BCH address. Double check your address is valid: ${address}`
+        error: `Invalid TENT address. Double check your address is valid: ${address}`
       })
     }
 
@@ -410,13 +410,13 @@ async function utxoBulk(
     for (let i: number = 0; i < addresses.length; i++) {
       const thisAddress: string = addresses[i]
 
-      // Ensure the input is a valid BCH address.
+      // Ensure the input is a valid TENT address.
       try {
         bitbox.Address.toLegacyAddress(thisAddress)
       } catch (er) {
         res.status(400)
         return res.json({
-          error: `Invalid BCH address. Double check your address is valid: ${thisAddress}`
+          error: `Invalid TENT address. Double check your address is valid: ${thisAddress}`
         })
       }
 
@@ -492,13 +492,13 @@ async function unconfirmedSingle(
     logger.debug(`Executing address/utxoSingle with this address: `, address)
     wlogger.debug(`Executing address/utxoSingle with this address: `, address)
 
-    // Ensure the input is a valid BCH address.
+    // Ensure the input is a valid TENT address.
     try {
       bitbox.Address.toLegacyAddress(address)
     } catch (err) {
       res.status(400)
       return res.json({
-        error: `Invalid BCH address. Double check your address is valid: ${address}`
+        error: `Invalid TENT address. Double check your address is valid: ${address}`
       })
     }
 
@@ -578,13 +578,13 @@ async function unconfirmedBulk(
     for (let i: number = 0; i < addresses.length; i++) {
       const thisAddress: string = addresses[i]
 
-      // Ensure the input is a valid BCH address.
+      // Ensure the input is a valid TENT address.
       try {
         bitbox.Address.toLegacyAddress(thisAddress)
       } catch (err) {
         res.status(400)
         return res.json({
-          error: `Invalid BCH address. Double check your address is valid: ${thisAddress}`
+          error: `Invalid TENT address. Double check your address is valid: ${thisAddress}`
         })
       }
 
@@ -703,13 +703,13 @@ async function transactionsBulk(
     for (let i: number = 0; i < addresses.length; i++) {
       const thisAddress: string = addresses[i]
 
-      // Ensure the input is a valid BCH address.
+      // Ensure the input is a valid TENT address.
       try {
         bitbox.Address.toLegacyAddress(thisAddress)
       } catch (err) {
         res.status(400)
         return res.json({
-          error: `Invalid BCH address. Double check your address is valid: ${thisAddress}`
+          error: `Invalid TENT address. Double check your address is valid: ${thisAddress}`
         })
       }
 
@@ -787,13 +787,13 @@ async function transactionsSingle(
       address
     )
 
-    // Ensure the input is a valid BCH address.
+    // Ensure the input is a valid TENT address.
     try {
       bitbox.Address.toLegacyAddress(address)
     } catch (err) {
       res.status(400)
       return res.json({
-        error: `Invalid BCH address. Double check your address is valid: ${address}`
+        error: `Invalid TENT address. Double check your address is valid: ${address}`
       })
     }
 

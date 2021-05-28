@@ -26,7 +26,7 @@ class Ninsight {
     _this.axios = axios
   }
 
-  // Query the Ninsight API for a balance on a single BCH address.
+  // Query the Ninsight API for a balance on a single TENT address.
   // Returns a Promise.
   async balance(thisAddress) {
     try {
@@ -69,7 +69,7 @@ class Ninsight {
     }
   }
 
-  // Query the Ninsight API for UTXOs associated with a single BCH address.
+  // Query the Ninsight API for UTXOs associated with a single TENT address.
   // Returns a Promise.
   async utxo(thisAddress) {
     try {

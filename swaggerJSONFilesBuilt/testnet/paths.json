@@ -32,12 +32,12 @@
 						}
 					},
 					"400": {
-						"description": "Received an invalid Bitcoin Cash address as input.",
+						"description": "Received an invalid TENT address as input.",
 						"content": {
 							"application/json": {
 								"schema": {
 									"status": 500,
-									"message": "Received an invalid Bitcoin Cash address as input."
+									"message": "Received an invalid TENT address as input."
 								}
 							}
 						}
@@ -76,12 +76,12 @@
 						}
 					},
 					"400": {
-						"description": "Received an invalid Bitcoin Cash address as input.",
+						"description": "Received an invalid TENT address as input.",
 						"content": {
 							"application/json": {
 								"schema": {
 									"status": 500,
-									"message": "Received an invalid Bitcoin Cash address as input."
+									"message": "Received an invalid TENT address as input."
 								}
 							}
 						}
@@ -121,12 +121,12 @@
 						}
 					},
 					"400": {
-						"description": "Received an invalid Bitcoin Cash address as input.",
+						"description": "Received an invalid TENT address as input.",
 						"content": {
 							"application/json": {
 								"schema": {
 									"status": 500,
-									"message": "Received an invalid Bitcoin Cash address as input."
+									"message": "Received an invalid TENT address as input."
 								}
 							}
 						}
@@ -165,12 +165,12 @@
 						}
 					},
 					"400": {
-						"description": "Received an invalid Bitcoin Cash address as input.",
+						"description": "Received an invalid TENT address as input.",
 						"content": {
 							"application/json": {
 								"schema": {
 									"status": 500,
-									"message": "Received an invalid Bitcoin Cash address as input."
+									"message": "Received an invalid TENT address as input."
 								}
 							}
 						}
@@ -210,12 +210,12 @@
 						}
 					},
 					"400": {
-						"description": "Received an invalid Bitcoin Cash address as input.",
+						"description": "Received an invalid TENT address as input.",
 						"content": {
 							"application/json": {
 								"schema": {
 									"status": 500,
-									"message": "Received an invalid Bitcoin Cash address as input."
+									"message": "Received an invalid TENT address as input."
 								}
 							}
 						}
@@ -254,12 +254,12 @@
 						}
 					},
 					"400": {
-						"description": "Received an invalid Bitcoin Cash address as input.",
+						"description": "Received an invalid TENT address as input.",
 						"content": {
 							"application/json": {
 								"schema": {
 									"status": 500,
-									"message": "Received an invalid Bitcoin Cash address as input."
+									"message": "Received an invalid TENT address as input."
 								}
 							}
 						}
@@ -321,12 +321,12 @@
 						"description": "successful operation"
 					},
 					"400": {
-						"description": "Received an invalid Bitcoin Cash address as input.",
+						"description": "Received an invalid TENT address as input.",
 						"content": {
 							"application/json": {
 								"schema": {
 									"status": 500,
-									"message": "Received an invalid Bitcoin Cash address as input."
+									"message": "Received an invalid TENT address as input."
 								}
 							}
 						}
@@ -1975,7 +1975,7 @@
 					{
 						"name": "txid",
 						"in": "path",
-						"description": "The BCH transaction ID",
+						"description": "The TENT transaction ID",
 						"required": true,
 						"example": "57b3082a2bf269b3d6f40fee7fb9c664e8256a88ca5ee2697c05b9457822d446",
 						"schema": {
@@ -2002,7 +2002,7 @@
 					{
 						"name": "tokenId",
 						"in": "path",
-						"description": "The BCH tokenId",
+						"description": "The TENT tokenId",
 						"required": true,
 						"example": "495322b37d6b2eae81f045eda612b95870a0c2b6069c58f70cf8ef4e6a9fd43a",
 						"schema": {
@@ -2265,7 +2265,7 @@
 					{
 						"name": "address",
 						"in": "path",
-						"description": "The BCH/SLP address",
+						"description": "The TENT/SLP address",
 						"required": true,
 						"example": "bitcoincash:qr4aadjrpu73d2wxwkxkcrt6gqxgu6a7usxfm96fst",
 						"schema": {

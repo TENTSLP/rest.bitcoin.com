@@ -3,7 +3,7 @@
 
   This test file uses the environment variable TEST to switch between unit
   and integration tests. By default, TEST is set to 'unit'. Set this variable
-  to 'integration' to run the tests against BCH mainnet.
+  to 'integration' to run the tests against TENT mainnet.
 */
 
 const chai = require("chai")

@@ -346,17 +346,17 @@ async function reverseLookup(
 //     if (cashAddress === undefined) {
 //       res.status(400)
 //       return res.json({
-//         error: `Missing BCH address.`
+//         error: `Missing TENT address.`
 //       })
 //     }
 
-//     // Ensure the input is a valid BCH address.
+//     // Ensure the input is a valid TENT address.
 //     try {
 //       isCashAccount(cashAddress)
 //     } catch (err) {
 //       res.status(400)
 //       return res.json({
-//         error: `Invalid BCH address. Double check your address is valid: ${cashAddress}`
+//         error: `Invalid TENT address. Double check your address is valid: ${cashAddress}`
 //       })
 //     }
 

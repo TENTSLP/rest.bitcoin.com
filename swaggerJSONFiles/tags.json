@@ -18,7 +18,7 @@
     },
     {
       "name": "blockchain",
-      "description": "Interacting w/ the BCH Blockchain",
+      "description": "Interacting w/ the TENT Blockchain",
       "externalDocs": {
         "description": "Find out more",
         "url": "https://developer.bitcoin.com/rest/docs/blockchain"
@@ -34,7 +34,7 @@
     },
     {
       "name": "mining",
-      "description": "Mining w/ the BCH Blockchain",
+      "description": "Mining w/ the TENT Blockchain",
       "externalDocs": {
         "description": "Find out more",
         "url": "https://developer.bitcoin.com/rest/docs/mining"
@@ -58,7 +58,7 @@
     },
     {
       "name": "util",
-      "description": "Bitcoin Cash utilities.",
+      "description": "TENT utilities.",
       "externalDocs": {
         "description": "Find out more",
         "url": "https://developer.bitcoin.com/rest/docs/util"

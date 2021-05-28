@@ -1,7 +1,7 @@
 {
-  "name": "rest.bitcoin.com",
+  "name": "rest.tent.app",
   "version": "3.12.4",
-  "description": "REST API for Bitcoin.com's Cloud",
+  "description": "REST API for TENT",
   "author": "Gabriel Cardona <gabriel@bitcoin.com>",
   "contributors": [
     "Chris Troutner <chris.troutner@gmail.com>"

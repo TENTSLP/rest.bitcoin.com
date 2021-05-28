@@ -14,7 +14,7 @@ describe("#Blockbook", () => {
   })
 
   describe("#balance", () => {
-    it("should retrieve BCH balance and output should comply with spec", async () => {
+    it("should retrieve TENT balance and output should comply with spec", async () => {
       const addr = "bitcoincash:qp3sn6vlwz28ntmf3wmyra7jqttfx7z6zgtkygjhc7"
 
       const result = await uut.balance(addr)
@@ -54,7 +54,7 @@ describe("#Blockbook", () => {
   })
 
   describe("#utxo", () => {
-    it("should retrieve BCH balance and output should comply with spec", async () => {
+    it("should retrieve TENT balance and output should comply with spec", async () => {
       const addr = "bitcoincash:qp3sn6vlwz28ntmf3wmyra7jqttfx7z6zgtkygjhc7"
 
       const result = await uut.utxo(addr)
