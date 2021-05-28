@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "axios": "^0.19.0",
-    "bitbox-sdk": "TENTSLP/bitbox-sdk#7e3113cf1186b121043abaf1c1da2b638970f8cc",
+    "bitbox-sdk": "TENTSLP/bitbox-sdk#v8.7.0-tent",
     "bitcoincash-zmq-decoder": "TENTSLP/bitcoincash-zmq-decoder",
     "body-parser": "^1.18.3",
     "cashaccounts": "TENTSLP/cashaccounts",
@@ -57,7 +57,7 @@
     "pg": "^6.2.3",
     "pg-hstore": "^2.3.2",
     "prom-client": "^13.1.0",
-    "slp-sdk": "TENTSLP/tentslp-sdk#2fa02e33648a1f432aaea7def7e8811378769525",
+    "slp-sdk": "TENTSLP/tentslp-sdk#feat/bulk_slp_transactions",
     "socket.io": "^2.1.1",
     "strftime": "^0.10.0",
     "swagger-stats": "^0.95.6",
